@@ -15,6 +15,7 @@ run = ["python3", "main.py"]
 deploymentTarget = "cloudrun"
 
 [workflows]
+runButton = "f dev"
 
 [[workflows.workflow]]
 name = "f dev"
@@ -23,4 +24,4 @@ author = 45451017
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python -m purest"
+args = "python -m pytest"
