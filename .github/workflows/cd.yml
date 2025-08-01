@@ -21,7 +21,7 @@ jobs:
 
     - name: Deploy to Replit
       run: |
-        git config --global user.email "hariharank@karunya.edu.in"
+        git config --global user.email "haranh503@gmail.com"
         git config --global user.name "hariharank14"
         git remote add replit https://username:${{ secrets.REPLIT_TOKEN }}@git.replit.com/hariharank14
         git push replit main --force
