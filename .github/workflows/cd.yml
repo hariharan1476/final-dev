@@ -3,7 +3,7 @@ name: CD to Replit
 on:
   push:
     branches:
-      - main  # or your deployment branch
+      - main
 
 jobs:
   deploy:
@@ -12,21 +12,21 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-
-    - name: Install Node.js (if needed)
-      uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        path: ./repo
 
     - name: Install dependencies
       run: npm install
+      working-directory: ./repo
 
     - name: Run tests
       run: npm test
+      working-directory: ./repo
 
-    - name: Deploy to Replit (via Git pull)
+    - name: Deploy to Replit
       run: |
         git config --global user.email "your-email@example.com"
         git config --global user.name "Your Name"
         git remote add replit https://username:${{ secrets.REPLIT_TOKEN }}@git.replit.com/your-replit-id
         git push replit main --force
+      working-directory: ./repo
