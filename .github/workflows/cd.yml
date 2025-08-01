@@ -12,16 +12,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-      with:
-        path: ./repo
 
     - name: Install dependencies
       run: npm install
-      working-directory: ./repo
 
     - name: Run tests
       run: npm test
-      working-directory: ./repo
 
     - name: Deploy to Replit
       run: |
@@ -29,4 +25,3 @@ jobs:
         git config --global user.name "Your Name"
         git remote add replit https://username:${{ secrets.REPLIT_TOKEN }}@git.replit.com/your-replit-id
         git push replit main --force
-      working-directory: ./repo
